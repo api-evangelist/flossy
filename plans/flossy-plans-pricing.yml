@@ -1,0 +1,18 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.flossy.com/
+plan_count: 0
+currency: null
+note: >-
+  Flossy publishes no pricing at all. There is no /pricing page (https://www.flossy.com/pricing
+  returns 404) and no pricing link in the site header or footer — the footer carries only
+  Products, Solutions, Industries, Customers and Company columns. Every commercial call to
+  action routes to a demo request (https://www.flossy.com/book-a-demo, HTTP 200) or a
+  ClickUp/HubSpot lead form, so acquisition is a sales-led motion with no self-serve tier,
+  no published per-seat or per-call rate, and no free trial named on the public site. This
+  is a recorded zero, not an unchecked field.
+evidence:
+- {url: 'https://www.flossy.com/pricing', status: 404}
+- {url: 'https://www.flossy.com/book-a-demo', status: 200}
+- {url: 'https://www.flossy.com/', status: 200, note: 'footer and nav enumerated; no pricing link present'}
+plans: []

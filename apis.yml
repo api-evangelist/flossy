@@ -1,17 +1,38 @@
 aid: flossy
 name: Flossy
-description: 'Flossy is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Flossy is a Santa Monica, California healthcare technology company that
+  builds AI agents ("AI coworkers") for dental practices, veterinary clinics and med
+  spas. Its named agents cover front-office and revenue-cycle work: Fiona handles inbound
+  and outbound patient communication and scheduling across phone, SMS and web chat;
+  Betsy scores call-center quality and marketing performance; Michael captures insurance,
+  verifies benefits and surfaces billing insights; and Reid forecasts revenue and optimizes
+  schedule capacity and staffing. FlossyHQ is the operator console the practice works
+  in, and Agent Builder lets practices assemble custom agents. Founded in 2020 by Miles
+  Beckett and Steve Seigel, Flossy began as a pay-as-you-go dental care marketplace
+  and has since repositioned around agentic automation for practice operations. Flossy
+  publishes no public developer program, API reference or machine-readable specification;
+  the one publicly reachable first-party integration surface is the embeddable Fiona
+  web-chat widget.'
+image: https://cdn.prod.website-files.com/5fdcd779f4e21f75c74a0997/67cb891c40136f07a823f79b_og-flossy.png
 url: https://raw.githubusercontent.com/api-evangelist/flossy/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profile
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-16'
 modified: '2026-08-16'
 tags:
 - Company
+- Artificial Intelligence
+- AI Agents
+- Health Care
+- Dental
+- Veterinary
+- Scheduling
+- Voice
+- Practice Management
+- Revenue Cycle
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -20,4 +41,55 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.flossy.com/
+- type: Blog
+  url: https://www.flossy.com/blog
+- type: TermsOfService
+  url: https://www.flossy.com/tos
+- type: PrivacyPolicy
+  url: https://www.flossy.com/privacy
+- type: Login
+  url: https://hq.flossy.com/
+- type: Support
+  url: mailto:hello@flossy.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/flossy/
+- type: Careers
+  url: https://flossy.breezy.hr/
+- type: Components
+  url: components/flossy-components.yml
+- type: DomainSecurity
+  url: security/flossy-domain-security.yml
+- type: Plans
+  url: plans/flossy-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/flossy-rate-limits.yml
+- type: LLMsTxt
+  url: llms/flossy-llms.txt
+x-enrichment:
+  date: '2026-08-16'
+  status: minimal
+  artifacts_added: 6
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Flossy ships AI agents only as an end-user product for practices — there is no
+    developer portal, API reference or spec anywhere on its surface: /developers,
+    /developer, /api and /docs all 404, developer.flossy.com and docs.flossy.com do
+    not resolve, api.flossy.com is a dangling CNAME to a Heroku Private Space with no
+    public A record, and the one live API host (scheduler-api.flossy.com) answers 200
+    on its root but 404s every OpenAPI/Swagger/docs path and requires an x-api-key.
+  evidence:
+  - url: https://www.flossy.com/developers
+    status: 404
+  - url: https://www.flossy.com/docs
+    status: 404
+  - url: https://scheduler-api.flossy.com/openapi.json
+    status: 404
+  - url: https://www.flossy.com/.well-known/agent-card.json
+    status: 404
+  - url: https://hq.flossy.com/fiona-widget.js
+    status: 200
+  checked: '2026-08-16'

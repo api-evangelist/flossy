@@ -1,0 +1,18 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.flossy.com/
+limit_count: 0
+note: >-
+  No rate limits are documented, because Flossy publishes no API documentation of any
+  kind — there is no developer portal, no API reference and no machine-readable spec
+  (https://www.flossy.com/developers, /developer, /api and /docs all return 404, and the
+  developer/docs subdomains do not resolve). The one live first-party API host found,
+  scheduler-api.flossy.com, answers HTTP 200 on its root but 404s every specification and
+  documentation path and requires an x-api-key header, so no rate-limit headers could be
+  observed on an unauthenticated response. Recorded as an honest zero.
+evidence:
+- {url: 'https://www.flossy.com/developers', status: 404}
+- {url: 'https://www.flossy.com/docs', status: 404}
+- {url: 'https://scheduler-api.flossy.com/', status: 200, note: 'plain-text root; /openapi.json, /swagger.json, /docs, /redoc, /api-docs all 404'}
+limits: []
+headers: []

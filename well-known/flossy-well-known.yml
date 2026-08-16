@@ -1,0 +1,48 @@
+generated: '2026-08-16'
+method: probed
+source: live GET of the /.well-known/ discovery surface on every Flossy host found
+note: >-
+  Every probed path returned 404 (www.flossy.com, scheduler-api.flossy.com) or an
+  SPA catch-all HTML shell (hq.flossy.com answers HTTP 200 with the FlossyHQ
+  single-page-app document for EVERY /.well-known/* path, which is not a document
+  and is recorded as a miss). No WellKnown, SecurityTxt or AgentCard pointer is
+  emitted in apis.yml — this file records a verified absence, not a presence.
+  api.flossy.com is present in DNS as a CNAME to a Heroku Private Space host
+  (radiant-hamlet-8351.stark-temple-1934.herokuspace.com) that has no public A
+  record, so it could not be probed at all.
+hosts:
+- host: https://www.flossy.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://scheduler-api.flossy.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: https://hq.flossy.com
+  note: >-
+    SPA catch-all. Returns HTTP 200 with the same 1338-byte FlossyHQ HTML shell
+    (text/html) for every path probed, including /.well-known/agent-card.json,
+    /.well-known/agent.json, /llms.txt and /openapi.json. Treated as a miss on all
+    paths per the false-positive rule.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/agent.json, status: 200, content_type: text/html, document: false}
+- host: https://api.flossy.com
+  note: >-
+    Unresolvable. CNAME to a Heroku Private Space hostname with no public A record;
+    curl returns "Could not resolve host" (exit 6). Not probed.
+  documents: []

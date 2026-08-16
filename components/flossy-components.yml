@@ -1,0 +1,51 @@
+generated: '2026-08-16'
+method: probed
+source: https://hq.flossy.com/fiona-widget.js
+description: >-
+  Flossy ships one publicly reachable, embeddable client-side component: the Fiona
+  web-chat widget. A practice drops a single <script> tag on its own website and the
+  widget mounts a floating button plus an iframe that loads the Fiona web-chat surface
+  hosted at hq.flossy.com/web-chat-embed. Flossy publishes no developer documentation
+  for it — the loader script, its configuration attributes and the embed URL below were
+  read directly from the first-party script Flossy serves publicly (HTTP 200,
+  7,411 bytes, fetched 2026-08-16). There are no server-side SDK client libraries
+  (see: no packages/ artifact — no first-party package exists on npm, PyPI, RubyGems,
+  crates.io, Packagist, NuGet, Maven Central or pkg.go.dev).
+families:
+  web_chat:
+    description: >-
+      Embeddable Fiona web-chat widget for a practice's own marketing site. Converts
+      website visitors into booked appointments in-page; Flossy's Fiona product page
+      describes it as "Website visitors become booked appointments through our widget".
+    components:
+    - name: Fiona Web Chat Widget
+      id: fiona-widget
+      loader: https://hq.flossy.com/fiona-widget.js
+      distribution: cdn
+      versioned: false
+      embed: https://hq.flossy.com/web-chat-embed?institutionId=<institutionId>
+      mount: >-
+        Injects #fiona-widget-container with a #fiona-widget-button launcher and a
+        #fiona-widget-window iframe. Guards against double-mount (idempotent) and
+        refuses to render inside the /web-chat-embed page itself.
+      configuration:
+      - {attribute: data-institution-id, description: Flossy institution (practice group) identifier the chat session is bound to. Required.}
+      - {attribute: data-location-id, description: Specific practice location the session is scoped to.}
+      - {attribute: data-auto-expand, description: Auto-open the chat window on load.}
+      - {attribute: data-auto-expand-web, description: Auto-open on desktop web only.}
+      - {attribute: data-auto-expand-mobile, description: Auto-open on mobile only.}
+      - {attribute: data-dynamic-input, description: Toggles the dynamic input affordance in the chat window.}
+notes:
+- >-
+  Distribution is UNPINNED. The loader is served from a bare, unversioned path on
+  hq.flossy.com with no registry entry and no version query string, so an embedding
+  practice cannot tell which build it is running and cannot pin one. There is no
+  metadata endpoint to query for a version.
+- >-
+  Flossy also operates a FlossyHQ operator console SPA at hq.flossy.com (Vite build,
+  Firebase Auth) and product surfaces at betsy.flossy.com and reid.flossy.com. Those
+  are end-user applications, not embeddable components, and are not catalogued here.
+x-evidence:
+- {url: 'https://hq.flossy.com/fiona-widget.js', http_status: 200, content_type: application/javascript, bytes: 7411, fetched: '2026-08-16'}
+- {url: 'https://hq.flossy.com/web-chat-embed', http_status: 200, content_type: text/html, fetched: '2026-08-16'}
+- {url: 'https://www.flossy.com/products/fiona', http_status: 200, fetched: '2026-08-16'}
