@@ -24,6 +24,19 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - rate-limits
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://cdn.prod.website-files.com/5fdcd779f4e21f75c74a0997/67cb891c40136f07a823f79b_og-flossy.png
 url: https://raw.githubusercontent.com/api-evangelist/flossy/refs/heads/main/apis.yml
 x-type: company
